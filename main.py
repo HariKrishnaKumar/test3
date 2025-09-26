@@ -62,6 +62,11 @@ from utils.merchant_extractor import (
     extract_orders
 )
 from routers.router import router as main_router
+from routers.router import router as main_router
+from middleware.response_middleware import ResponseMiddleware
+from utils.exception_handlers import register_exception_handlers
+
+
 
 app = FastAPI()
 
@@ -115,6 +120,7 @@ app.include_router(merchant_routes)
 app.include_router(merchant_categories)
 app.include_router(api_router)
 # Add the new routers from test2
+app.include_router(main_router)
 router.include_router(items.router, prefix="/items", tags=["items"])
 router.include_router(merchants.router, prefix="/merchants", tags=["merchants"])
 router.include_router(recommendations.router, prefix="/recommendations", tags=["recommendations"])

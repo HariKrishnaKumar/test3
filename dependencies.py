@@ -5,6 +5,33 @@ from database.database import get_db
 from models.user import User
 # import jwt
 from typing import Optional
+from fastapi import Path
+from models.merchant_token import MerchantToken 
+
+def get_clover_token(
+    merchant_id: str = Path(...),
+    db: Session = Depends(get_db)
+) -> str:
+    """
+    Dependency to fetch the latest Clover access token for a merchant from the database.
+    """
+    # Note: The logic in test2/items.py is slightly different and better
+    # than this original dependency. We will rely on the logic inside the route itself,
+    # but this function is still required for the dependency injection to work.
+    
+    # We'll use the logic from the original test2 dependency file.
+    token_record = db.query(MerchantToken).filter(
+        MerchantToken.merchant_id == merchant_id  # This assumes your MerchantToken model has merchant_id
+    ).order_by(MerchantToken.created_at.desc()).first()
+
+    if not token_record or not token_record.token:
+        raise HTTPException(
+            status_code=404,
+            detail=f"No valid Clover API token found for merchant ID: {merchant_id}"
+        )
+    return token_record.token
+
+
 
 # Security scheme for JWT tokens
 security = HTTPBearer()
