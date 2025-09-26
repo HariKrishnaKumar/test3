@@ -32,18 +32,18 @@ def upgrade() -> None:
     )
 
     # Create question_masters table
-    op.create_table('question_masters',
-        sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
-        sa.Column('question_key', sa.String(100), nullable=False),
-        sa.Column('question_text', sa.Text(), nullable=False),
-        sa.Column('question_order', sa.Integer(), nullable=False),
-        sa.Column('type', sa.String(50), nullable=True),
-        sa.Column('is_active', sa.Boolean(), nullable=True, server_default=sa.sql.expression.true()),
-        sa.Column('created_at', sa.DateTime(), nullable=True, server_default=sa.func.now()),
-        sa.Column('updated_at', sa.DateTime(), nullable=True),
-        sa.PrimaryKeyConstraint('id'),
-        sa.UniqueConstraint('question_key')
-    )
+    # op.create_table('question_masters',
+    #     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
+    #     sa.Column('question_key', sa.String(100), nullable=False),
+    #     sa.Column('question_text', sa.Text(), nullable=False),
+    #     sa.Column('question_order', sa.Integer(), nullable=False),
+    #     sa.Column('type', sa.String(50), nullable=True),
+    #     sa.Column('is_active', sa.Boolean(), nullable=True, server_default=sa.sql.expression.true()),
+    #     sa.Column('created_at', sa.DateTime(), nullable=True, server_default=sa.func.now()),
+    #     sa.Column('updated_at', sa.DateTime(), nullable=True),
+    #     sa.PrimaryKeyConstraint('id'),
+    #     sa.UniqueConstraint('question_key')
+    # )
 
     # Create question_translations table
     op.create_table('question_translations',

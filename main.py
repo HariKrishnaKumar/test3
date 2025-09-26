@@ -36,7 +36,22 @@ from utils.exception_handlers import (
     general_exception_handler
 )
 
-
+from fastapi import APIRouter
+from app.routes import (
+    user,
+    clover_auth,
+    clover_data,
+    select_routes,
+    voice_routes,
+    question_master,
+    clover_cart,
+    userCart,
+    cart,
+    # New additions from test2
+    items,
+    merchants,
+    recommendations,
+)
 
 
 from utils.merchant_extractor import (
@@ -99,8 +114,10 @@ app.include_router(question_master.router)
 app.include_router(merchant_routes)
 app.include_router(merchant_categories)
 app.include_router(api_router)
-
-
+# Add the new routers from test2
+router.include_router(items.router, prefix="/items", tags=["items"])
+router.include_router(merchants.router, prefix="/merchants", tags=["merchants"])
+router.include_router(recommendations.router, prefix="/recommendations", tags=["recommendations"])
 
 @app.get("/")
 def read_root():
