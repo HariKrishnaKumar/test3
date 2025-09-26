@@ -61,7 +61,7 @@ from utils.merchant_extractor import (
     extract_inventory_items,
     extract_orders
 )
-
+from routers.router import router as main_router
 
 app = FastAPI()
 
