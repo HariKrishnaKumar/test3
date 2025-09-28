@@ -61,7 +61,7 @@ from utils.merchant_extractor import (
     extract_inventory_items,
     extract_orders
 )
-from routers.router import router as main_router
+
 from routers.router import router as main_router
 from middleware.response_middleware import ResponseMiddleware
 from utils.exception_handlers import register_exception_handlers

@@ -69,6 +69,7 @@ import schemas.recommendations as schemas
 from models import user as user_model
 from models import recommendations as recommendation_model
 from schemas import recommendations as recommendation_schema
+
 import app.models.recommendations as models
 import app.schemas.recommendations as schemas
 from app.models import user as user_model
